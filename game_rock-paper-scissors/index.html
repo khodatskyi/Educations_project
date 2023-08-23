@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, enim!</p>
+    <h1>Scissors Paper Rock</h1>
+    <h4>The winner is first to 5 points</h4>
+<div class="scores">
+    <div class="left-score">
+        <h2>PLAYER</h2>
+        <p class="num-scores" id="playerScores">scores</p>
+    </div>
+    <div class="right-score">
+        <h2>COMPUTER</h2>
+        <p class="num-scores" id="compScores">scores</p>
+    </div>
+</div>
+    <div class="container">
+        <div class="left-side">
+            <div class="buttons">
+                <button class="button" id="paper"><img src="img/paper.png" alt="" class="game_img"></button>
+                <button class="button" id="scissors"><img src="img/scissors.png" alt="" class="game_img"></button>
+                <button class="button" id="rock"><img src="img/stone.png" alt="" class="game_img"></button>
+            </div>
+            <p id="yourChoose">Your choose is </p>
+
+        </div>
+        <div class="right-side">
+            <div class="buttons">
+                <button class="button"><img src="img/paper.png" alt="" class="game_img" id="comp_img"></button>
+            </div>
+            <p id="compChoose">Computer choose is </p>
+        </div>
+    </div>
+    <p class="result" id="result"></p>
+
+
+    <script src="script.js"></script>
 </body>
 </html>
