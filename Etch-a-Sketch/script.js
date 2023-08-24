@@ -1,10 +1,10 @@
 
+const userNum = Number(prompt('Введите любое число от 0 до 100'))
 
 // ждем пока загрузится страница
 document.addEventListener("DOMContentLoaded", function () {
-    grid(66)
+    grid(userNum)
 });
-
 
 const grid = (num = 16) => {
     const  divs = document.getElementsByClassName('divs')
