@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Создаем num кол-во дивов
 const grid = (num = 16) => {
-    const mainDiv = document.getElementById("main");
+    const gridContainer = document.getElementById("grid-container");
 
     for(let i = 0; i < num; i++) {
         let createNewDiv = document.createElement("div");
         createNewDiv.className = "divs"; // Устанавливаем ID для нового div
-        createNewDiv.textContent = '16 divs';
+        createNewDiv.textContent = '16';
     
-        mainDiv.appendChild(createNewDiv);
+        gridContainer.appendChild(createNewDiv);
     }
 }
