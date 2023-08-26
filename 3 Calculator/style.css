@@ -3,17 +3,7 @@
     padding: 0;
 }
 
-
-main {
-
-
-}
-
 .container-parent {
-
-    /* background-color: yellow; */
-    /* justify-content: center;
-    align-items: center; */
     height: 100vh;
     background-color: rgba(222, 158, 47, 0.71);
     display: flex;
@@ -23,14 +13,11 @@ main {
 }
 
 .container-child {
-    /* display: flex; */
-
     width: 16em;
     height: 28em;
-
 }
 
-.calculator{
+.calculator {
     border-radius: 20px;
     background-color: rgb(62, 62, 61);
     width: 100%;
@@ -44,58 +31,61 @@ main {
     height: 80px;
     border-radius: 8px;
     background-color: rgb(176, 176, 216);
-    box-shadow: 48px 49px 21px -51px rgba(0,0,0,0.7) inset;
--webkit-box-shadow: 48px 49px 21px -51px rgba(0,0,0,0.7) inset;
--moz-box-shadow: 48px 49px 21px -51px rgba(0,0,0,0.7) inset;
+    box-shadow: 48px 49px 21px -51px rgba(0, 0, 0, 0.7) inset;
+    -webkit-box-shadow: 48px 49px 21px -51px rgba(0, 0, 0, 0.7) inset;
+    -moz-box-shadow: 48px 49px 21px -51px rgba(0, 0, 0, 0.7) inset;
 
 }
 
 
 .all-buttons button {
-    background-color: rgb(245, 140, 244);
+    background-color: rgb(139, 116, 139);
     font-size: 1.325rem;
-    /* padding: 1rem; */
     padding: 1rem 0;
-
     font-weight: 700;
     border: 0px solid transparent;
     border-radius: 100%;
-    box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.5);
-    
-
-    /* transition: all .15s ease-in-out; */
+    box-shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 
 }
 
-/* .all-buttons button {
-    font-size: 1.325rem;
-    padding: 1rem 0;
-    font-weight: 700;
-    background: #616161;
-    border: 0px solid transparent;
-    outline: none;
-    text-decoration: none;
-    border-radius: 100%;
-    box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.5);
-    color: #DFDFDF;
-    cursor: pointer;
-    transition: all .15s ease-in-out;
-} */
+button:hover {
+    transform: translateY(-5px);
+    transition: all .22s ease-in-out;
+}
 
+
+.digit:hover,
+.decimal:hover {
+    background-color: rgb(165, 106, 200);
+    color: rgb(255, 255, 255);
+}
+
+.allclear:hover,
+.clear:hover {
+    background-color: rgb(212, 133, 170);
+    color: aliceblue;
+}
+
+.operator:hover {
+    background-color: rgb(79, 175, 240);
+    color: aliceblue;
+}
+
+.equals:hover {
+    background-color: rgb(87, 250, 106);
+    color: aliceblue;
+}
 
 .all-buttons {
-    /* padding: 5%; */
-    /* margin: 5%; */
     margin-top: 2em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* grid-template-rows: auto; */
     grid-gap: 0.6rem;
-    /* width: 100%; */
 }
 
 button.equals {
-    /* width: 100%; */
     grid-column: 3 / 5;
     border-radius: 2.5rem
 }
