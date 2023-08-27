@@ -105,9 +105,6 @@ button.equals {
     align-items: end;
 }
 
-/* .result {
-    
-} */
 .operator, .digit {
     margin: 0;
 }
