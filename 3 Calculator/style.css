@@ -89,3 +89,25 @@ button.equals {
     grid-column: 3 / 5;
     border-radius: 2.5rem
 }
+
+
+.calculator-display {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-right: 8px;
+}
+
+.user-input, .result {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    align-items: end;
+}
+
+/* .result {
+    
+} */
+.operator, .digit {
+    margin: 0;
+}
