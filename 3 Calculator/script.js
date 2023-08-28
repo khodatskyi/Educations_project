@@ -113,6 +113,8 @@ const calculations = (arrayExpression) => {
     resultElement.textContent = finalResult
 }
 
+let decimalCounter = 0
+
 // Цикл для проверки нажатой клавиши
 for (let i = 0; i < buttons.length; i++) {
     const button = buttons[i];
@@ -122,11 +124,19 @@ for (let i = 0; i < buttons.length; i++) {
         if (buttonText === 'C' || buttonText === '=') {
         }
         else if (buttonText === '/' || buttonText === '*' || buttonText === '%' || buttonText === '+' || buttonText === '-') {
+            decimalCounter = 0
             if (lastChar === '/' || lastChar === '*' || lastChar === '%' || lastChar === '+' || lastChar === '-') {
                 expression = expression.slice(0, -1) + buttonText;
                 outputElement.textContent = expression;
             } else expression += button.textContent
             outputElement.textContent = expression;
+        }
+        else if (buttonText === '.') {
+            if(decimalCounter == 0) {
+                expression += button.textContent
+                outputElement.textContent = expression;
+                decimalCounter++
+            }
         }
 
         else expression += button.textContent
@@ -149,6 +159,7 @@ elementClear.addEventListener('click', () => {
 })
 
 equals.addEventListener('click', () => {
+    decimalCounter--
     arrayExpression = [...expression];
     calculations(arrayExpression);
 
