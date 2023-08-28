@@ -96,6 +96,8 @@ button.equals {
     flex-direction: column;
     height: 100%;
     padding-right: 8px;
+    font-size: 800;
+    /* color: brown; */
 }
 
 .user-input, .result {
@@ -103,6 +105,16 @@ button.equals {
     flex: 1;
     justify-content: end;
     align-items: end;
+    font-size: 22px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(40, 40, 50);
+}
+
+.result {
+    font-size: 35px;
+    color: rgb(46, 46, 57);
+    font-weight: bold;
+    /* font-style: normal; */
 }
 
 .operator, .digit {
