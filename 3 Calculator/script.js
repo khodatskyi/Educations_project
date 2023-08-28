@@ -7,15 +7,12 @@ const resultElement = document.getElementById('result');
 const buttons = document.getElementsByTagName('button')
 
 // дефолтные значения элементов
-let expression = '' 
+let expression = ''
 let arrayExpression = []
 let indexOperator = -1
-
-let first
-let second
 let result
 
-// функции для произведения вычислений
+
 const add = function (a, b) {
     return a + b;
 };
@@ -25,46 +22,89 @@ const subtract = function (a, b) {
 };
 
 const multiply = function (a, b) {
-    return a * b
+    return a * b;
 };
 const divide = function (a, b) {
-    return a / b
+    return a / b;
 };
 const divideWithRemainder = function (a, b) {
-    return a % b
+    return a % b;
 };
 
-// Выражение в массиве. Мы делим массив на первую цифру, вторую и оператор
-const updateArrayExpression = () => { 
-    arrayExpression = [...expression];
 
-    if(expression.includes('+')) {
-        indexOperator = arrayExpression.indexOf('+')
+const calculations = (arrayExpression) => {
+        let tokensArray = [];
+        let token = '';
+
+        // Разбиваем строку на токены, токены добавляем в отдельный массив
+        const getTokens = (expression) => {
+            for (let i = 0; i < expression.length; i++) {
+                const char = expression[i];
+                if (!isNaN(char) || char === '.') { // Проверяем, является ли символ числом или точкой
+                    token += char;
+                } else {
+                    if (token !== '') { // Добавляем только если токен не пустой
+                        tokensArray.push(parseFloat(token));
+                        token = ''; // Сбрасываем текущий токен
+                    }
+                    tokensArray.push(char); // Добавляем операторы и другие символы в массив
+                }
+            }
+            if (token !== '') { // вызываем для последнего элемента
+                tokensArray.push(parseFloat(token));
+            }
+        }
+
+
+        // Вызываем функцию getTokens для текущего выражения
+        getTokens(arrayExpression);
+
+        // Проходимся по нашему массиву из токенов по приоритету операторов, производим вычисления и подставляем результат в выражение
+        for (let i = 0; i < tokensArray.length; i++) {
+            const element = tokensArray[i];
+
+            if (element == '*' || element == '/' || element == '%') {
+                if (element == '*') {
+                    const a = tokensArray[i - 1];
+                    const b = tokensArray[i + 1];
+                    result = a * b;
+                }
+                if (element == '/') {
+                    const a = tokensArray[i - 1];
+                    const b = tokensArray[i + 1];
+                    result = a / b;
+                }
+                if (element == '%') {
+                    const a = tokensArray[i - 1];
+                    const b = tokensArray[i + 1];
+                    result = a % b;
+                }
+
+                // Заменяем оператор и операнды на результат операции
+                tokensArray.splice(i - 1, 3, result);
+                i -= 2; // Возвращаемся на два шага назад
+            }
+        }
+
+        // Выполняем оставшиеся операции + и -
+        /**
+         Поскольку у нас осталось выражение только с + и -, то обьявлением переменную и с лева на прово производим вычисления
+         А результат записываем в одну и ту же переменную, постоянно ее обновляя
+         */
+        let finalResult = tokensArray[0];
+        for (let i = 1; i < tokensArray.length; i += 2) {
+            const operator = tokensArray[i];
+            const operand = tokensArray[i + 1];
+
+            if (operator == '+') {
+                finalResult += operand;
+            }
+            if (operator == '-') {
+                finalResult -= operand;
+            }
+        }
+        resultElement.textContent = finalResult
     }
-
-    else if(expression.includes('-')) {
-        indexOperator = arrayExpression.indexOf('-')
-    }
-
-    else if(expression.includes('*')) {
-        indexOperator = arrayExpression.indexOf('*')
-    } 
-    
-    else if(expression.includes('/')) {
-        indexOperator = arrayExpression.indexOf('/')
-    } 
-    
-    else if(expression.includes('%')) {
-        indexOperator = arrayExpression.indexOf('%')
-    }
-
-    // отделяем первую цифру от второй и переводим ее в строку
-    first = arrayExpression.slice(0, indexOperator).join('')
-    second = arrayExpression.slice(indexOperator + 1).join('')
-    // конвертируем строку в цифру
-    first = +first
-    second = +second
-}
 
 // Цикл для проверки нажатой клавиши
 for (let i = 0; i < buttons.length; i++) {
@@ -74,9 +114,8 @@ for (let i = 0; i < buttons.length; i++) {
         if (buttonText === 'C' || buttonText === '=') {
         } else expression += button.textContent
         outputElement.textContent = expression;
-        updateArrayExpression();
+        // updateArrayExpression();
     });
-
 
 }
 // при нажатии на "АС" очищаем строку вывода
@@ -85,36 +124,16 @@ allClear.addEventListener('click', () => {
     result = ''
     outputElement.textContent = expression;
     resultElement.textContent = result
-    updateArrayExpression();
 })
 
 // при нажатии на "С" удаляем последний добавлений символ со строки вывода
-elementClear.addEventListener('click', () => { 
+elementClear.addEventListener('click', () => {
     expression = expression.slice(0, -1)
     outputElement.textContent = expression;
-    updateArrayExpression();
 })
 
-// при нажатии на "=" производим рез-ты и выводим их на дисплей
 equals.addEventListener('click', () => {
-    if (expression[indexOperator] == '+') {
-        result = add(first, second)
-        resultElement.textContent = result
-    }
-    else if (expression[indexOperator] == '-') {
-        result = subtract(first, second)
-        resultElement.textContent = result
-    }
-    else if (expression[indexOperator] == '*') {
-        result = multiply(first, second)
-        resultElement.textContent = result
-    }
-    else if (expression[indexOperator] == '/') {
-        result = divide(first, second)
-        resultElement.textContent = result
-    }
-    else if (expression[indexOperator] == '%') {
-        result = divideWithRemainder(first, second)
-        resultElement.textContent = result
-    }
+    arrayExpression = [...expression];
+    calculations(arrayExpression);
+
 })
