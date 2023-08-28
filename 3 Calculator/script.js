@@ -55,9 +55,15 @@ const calculations = (arrayExpression) => {
         }
     }
 
-
     // Вызываем функцию getTokens для текущего выражения
     getTokens(arrayExpression);
+
+    // Проверяем есть ли в финальном результате цифры после запятой, если есть, то ставим ограниченое их количество
+    const hasDecimalPlaces = (number) => {
+        if ((number % 1) !== 0)  {
+            return finalResult = finalResult.toFixed(3)
+        }
+    }
 
     // Проходимся по нашему массиву из токенов по приоритету операторов, производим вычисления и подставляем результат в выражение
     for (let i = 0; i < tokensArray.length; i++) {
@@ -103,6 +109,7 @@ const calculations = (arrayExpression) => {
             finalResult -= operand;
         }
     }
+    hasDecimalPlaces(finalResult)
     resultElement.textContent = finalResult
 }
 
