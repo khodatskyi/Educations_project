@@ -164,3 +164,14 @@ equals.addEventListener('click', () => {
     calculations(arrayExpression);
 
 })
+
+window.addEventListener('keydown', function(event) {
+    // Получаем код нажатой клавиши
+    const key = event.key;
+    // Проверяем, является ли нажатая клавиша цифрой
+    if (!isNaN(key)) {
+        // Если это цифра, добавляем ее к выражению и обновляем вывод
+        expression += key;
+        outputElement.textContent = expression;
+    }
+});
