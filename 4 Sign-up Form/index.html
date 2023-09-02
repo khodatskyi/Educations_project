@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="left-side">
+            <h1>GERMANY</h1>
+        </div>
+        <div class="right-side">
+            <form action="example.com">
+                <fieldset class="field-set">
+                    <span><label for="first-name">First name</label></span><input type="name" id="first-name"
+                        placeholder="Dmytro" required autocomplete="off" pattern="[A-z]{2,20}">
+                    <label for="last-name">Last name</label><input type="name" id="last-name" placeholder="Romanchenko"
+                        required autocomplete="off" pattern="[A-z]{2,20}">
+                    <label for="age">Age</label><input type="number" name="age" id="age" min="10" max="99"
+                        placeholder="18" required autocomplete="off" pattern="[0-9]{2}">
+                    <label for="email">Email</label><input type="email" id="email" placeholder="example@gmail.com"
+                        required autocomplete="off" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                    <label for="phone">Phone</label><input type="tel" id="phone" placeholder="380975443127" required
+                        autocomplete="off" pattern="[0-9]{8, 11}">
+                    <label for="password">Password</label><input type="password" id="password" required
+                        autocomplete="off">
+                    <span><label for="password-confirm" id="confirm-password">Confirm Password</label>
+                        <p id="Password-mismatch"></p>
+                    </span><input type="password" id="password-confirm" required autocomplete="off">
+                    <button type="submit">Submit</button>
+                </fieldset>
+
+            </form>
+
+
+
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
