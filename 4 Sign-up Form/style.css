@@ -126,7 +126,6 @@ input::placeholder {
 }
 
 button {
-
     display: block;
     margin: 0 auto;
     color: #000;
@@ -135,7 +134,7 @@ button {
     border-radius: 20px;
     height: 3.5rem;
     width: 50%;
-    margin-top: 2rem;
+    margin-top: 3rem;
     font-size: 1.5rem;
     color: var(--main-color);
 }
@@ -148,13 +147,30 @@ button:hover {
 }
 
 img {
-    height: 1.3rem;
+    height: 1.2rem;
     fill: #dde9f6;
+    margin-left: 10px;
 }
+
+.password-rules {
+    position: relative;
+    align-items: center;
+}
+#password-rules {
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+}
+
+
+.hidden {
+    display: none;
+  }
+
 
 @media (max-width: 1150px) {
     .field-set input {
-        min-width: 15rem;
+        min-width: 18rem;
     }
 
     .left-side h1 {
@@ -186,6 +202,9 @@ img {
 
     #password-confirm {
         margin-top: 5px;
+    }
+    #password-rules {
+        right: 5px;
     }
 
 }
@@ -234,5 +253,8 @@ img {
 
     .field-set input {
         min-width: 20rem;
+    }
+    #password-rules {
+        right: 35px;
     }
 }

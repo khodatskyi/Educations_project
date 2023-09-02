@@ -29,8 +29,10 @@
                         required autocomplete="off" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                     <label for="phone">Phone</label><input type="tel" id="phone" placeholder="380975443127" required
                         autocomplete="off" pattern="[0-9]{8, 11}">
-                    <label for="password">Password</label><input type="password" id="password" required
-                        autocomplete="off">
+                    <div id="parentElementRules" class="password-rules"><label for="password">Password</label><img src="icon-info.png"
+                            alt="info" id="img-info">
+                    <p id="password-rules" class="hidden"><span id="upper-letter">At least one capital letter</span><br> <span id="number">At least one number</span></p></div>
+                    <input type="password" id="password" required autocomplete="off">
                     <span><label for="password-confirm" id="confirm-password">Confirm Password</label>
                         <p id="Password-mismatch"></p>
                     </span><input type="password" id="password-confirm" required autocomplete="off">
